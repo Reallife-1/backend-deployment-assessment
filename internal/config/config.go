@@ -30,6 +30,7 @@ func LoadConfig(path string) (config Config, err error) {
 	viper.SetDefault("PORT", "8080")
 	viper.SetDefault("ENABLE_CACHE", false)
 	viper.SetDefault("JWT_EXPIRATION_HOURS", 72)
+        viper.SetDefault("MONGO_URI", "")
 
 	err = viper.ReadInConfig()
 	if err != nil {
