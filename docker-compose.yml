@@ -1,12 +1,13 @@
-version: "3.8"
+version: "3.3"
 
 services:
-  # golang backend
   backend:
     image: muchotodo-backend:latest
     container_name: muchotodo-backend
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     environment:
       - PORT=8080
       - MONGO_URI=mongodb://mongodb:27017/much_todo_db
@@ -21,7 +22,6 @@ services:
     networks:
       - app-network
 
-  # mongodb database
   mongodb:
     image: mongo:6.0
     container_name: muchotodo-mongodb
