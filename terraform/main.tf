@@ -285,7 +285,7 @@ resource "aws_instance" "backend" {
   key_name               = aws_key_pair.main.key_name
   vpc_security_group_ids = [aws_security_group.backend.id]
   user_data              = file("${path.module}/user_data/backend_setup.sh")
-
+  depends_on = [aws_nat_gateway.main]
   tags = {
     Name = "startuptech-backend"
   }
